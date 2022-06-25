@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>第五人格ノルマ計算ツール</title>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+  <!--
+<link rel="stylesheet" href="css/jquery.mobile-1.3.1.css"/>
+//-->
+  <style>
+    .result_show {
+      font-size: 120%;
+      color: #0000FF;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div data-role="page" id="p-form-textbox">
+    <div data-role="header" data-theme="a">
+      <h1>第五人格ノルマ計算ツール</h1>
+    </div>
+    <div data-role="content">
+      <h2>第五人格ノルマ計算ツール</h2>
+      <div class="tweet" id="socialbuttons"></div>
+      <div data-role="fieldcontain">
+        <div class="ui-field-contain">
+          <table>
+            <img src="https://img.70okugame.com/gameimg/2020/07/danni001.jpg">
+            <br>
+            <tr>
+              <td>今日の日付</td>
+              <td style="text-align:center;"><span id="today"></span></td>
+            </tr>
+            <tr>
+              <td>シーズン終了予想日</td>
+              <td><input type="date" name="end_date" id="end_date" class="data_in" val="XXXX/XX/XX"
+                  style="height:2.4em;width:9em;text-align:center;" placeholder="タップ" /></td>
+            </tr>
+            <tr>
+              <td>　　　</td>
+              <td style="text-align:center;"><span id="today"></span></td>
+            </tr>
+            <tr>
+              <td>今の大段位</td>
+              <td>
+                <select id="dan1" name="dan1" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="dans0" id="dans0_1">
+              <td>(1～6段の方)今の小段位</td>
+              <td>
+                <select id="dans1" name="dans1" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="dans0" id="dans0_2">
+              <td>(7段の方)今の星の数</td>
+              <td>
+                <select id="star1" name="star1" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                  <option value="60">60</option>
+                  <option value="65">65</option>
+                  <option value="70">70</option>
+                  <option value="75">75</option>
+                  <option value="80">80</option>
+                  　<option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95">95</option>
+                  <option value="100">100</option>
+            <tr>
+              <td>　　　</td>
+              <td style="text-align:center;"><span id="today"></span></td>
+            </tr>
+
+            <tr>
+              <td>目標の大段位</td>
+              <td>
+                <select id="dan2" name="dan2" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+
+                </select>
+              </td>
+            </tr>
+            <tr class="dans1" id="dans0_3">
+              <td>(1～6段の方)目標の小段位</td>
+              <td>
+                <select id="dans2" name="dans2" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+
+
+                </select>
+              </td>
+            </tr>
+            <tr class="dans1" id="dans0_4">
+              <td>(7段の方)目標の星の数</td>
+              <td>
+                <select id="star2" name="star2" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                  <option value="60">60</option>
+                  <option value="65">65</option>
+                  <option value="70">70</option>
+                  <option value="75">75</option>
+                  <option value="80">80</option>
+                  　<option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95">95</option>
+                  <option value="100">100</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>　　　</td>
+              <td style="text-align:center;"><span id="today"></span></td>
+            </tr>
+
+            <tr>
+              <td>勝率予想（％）</td>
+              <td>
+                <select id="win_rate" name="win_rate" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                  <option value="60">60</option>
+                  <option value="65">65</option>
+                  <option value="70">70</option>
+                  <option value="75">75</option>
+                  <option value="80">80</option>
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95">95</option>
+                  <option value="100">100</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>引き分け予想（％）</td>
+              <td>
+                <select id="even_rate" name="even_rate" class="data_in select_menu" data-native-menu="false"
+                  data-hide-placeholder-menu-items="false">
+                  <option value="" data-placeholder="true">---</option>
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                  <option value="60">60</option>
+                  <option value="65">65</option>
+                  <option value="70">70</option>
+                  <option value="75">75</option>
+                  <option value="80">80</option>
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95">95</option>
+                  <option value="100">100</option>
+                </select>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+      <!-- 結果表示エリア -->
+
+      <div id="result">
+        <h2>結果予測</h2>
+        <div>目標段位相当ポイント：<span id="res_calculated_pt" class="result_show"> </span> pt</div>
+        <div>目標に必要なポイント：<span id="res_needed_pt_all" class="result_show"> </span> pt</div>
+        <div>シーズン終了まで残り：<span id="res_restdays" class="result_show"> </span>日</div>
+        <div>一日に必要なポイント：<span id="res_needed_pt_perday" class="result_show"> </span> pt</div>
+        <div>一試合当たり期待値　：<span id="res_expect_pt" class="result_show"> </span> pt</div>
+        <div>必要な試合回数予測　：<span id="res_kaisu" class="result_show"> </span>回／日</div>
+        <div style="margin-top:1em;text-align:center;"><button class="btn btn-primary" id="btn_reset">リセット</button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div data-role="footer" data-theme="a">
+      <h2>今日もランクマ頑張りましょう</h2>
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+  <script src="js/ranktweet.js"></script>
+  <script>
+    $(function () {
+
+
+      //$("#socialbuttons .twitter").socialbutton("twitter", {
+      //button : "horizontal",
+      //text : "つぶやきに含めるテキスト",
+      //url : "対象URL",
+      //}).width(95);
+
+      $('.tweet').socialbutton('twitter', {
+        button: 'horizontal',
+        text: '#第五人格ノルマ計算'
+
+      });
+
+
+      // 初期設定
+      $('#result').hide();
+      $('.dans0').hide();
+      $('.dans1').hide();
+
+
+      // 大段位選択
+
+      $('#dan1').on('change', function () {
+        $('.dans0').hide();
+        if ($('#dan1').val() < 7) {
+          $('#dans0_1').show();
+        }
+        else {
+          $('#dans0_2').show();
+        }
+      });
+
+      $('#dan2').on('change', function () {
+        $('.dans1').hide();
+        if ($('#dan2').val() < 7) {
+          $('#dans0_3').show();
+        }
+        else {
+          $('#dans0_4').show();
+        }
+      });
+
+
+
+      // 今日の日付取得
+      var today = new Date();
+      today_year = today.getFullYear();
+      today_month = today.getMonth() + 1;
+      today_day = today.getDate();
+      $('#today').text(today_year + '/' + today_month + '/' + today_day);
+
+      // 変更を判定
+      $('.data_in').on('change', function () {
+
+        win_rate = Number($('#end_date').val());
+        dan1 = Number($('#dan1').val());
+        dans1 = Number($('#dans1').val());
+        star1 = $('#star1').val();
+        dan2 = Number($('#dan2').val());
+        dans2 = $('#dans2').val();
+        star2 = $('#star2').val();
+
+        win_rate = $('#win_rate').val();
+        even_rate = $('#even_rate').val();
+
+        if (dan1 != '') console.log('dan1: ' + dan1);
+        if (dans1 != '') console.log('dans1: ' + dans1);
+        if (star1 != '') console.log('star1: ' + star1);
+        if (dan2 != '') console.log('dan2: ' + dan2);
+        if (dans2 != '') console.log('dans2: ' + dans2);
+        if (star2 != '') console.log('star2: ' + star2);
+        if (end_date != '') console.log('end_date: ' + end_date);
+        if (win_rate != '') console.log('win_rate: ' + win_rate);
+        if (even_rate != '') console.log('even_rate: ' + even_rate);
+
+        if (win_rate != '' && even_rate != '') {
+          $('#res_calculated_pt').text(dan1 + dan2);
+          console.log(dan1 + dan2);
+          $('#result').show();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
