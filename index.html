@@ -2,6 +2,9 @@
 <html>
 
 <head>
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
   <title>第五人格ノルマ計算ツール</title>
   <meta charset="utf-8" />
   <meta name="viewport"
@@ -77,6 +80,7 @@
                 </select>
               </td>
             </tr>
+            
             <tr class="dans0" id="dans0_2">
               <td>(7段の方)今の星の数</td>
               <td>
@@ -100,7 +104,7 @@
                   <option value="70">70</option>
                   <option value="75">75</option>
                   <option value="80">80</option>
-                  　<option value="85">85</option>
+                  <option value="85">85</option>
                   <option value="90">90</option>
                   <option value="95">95</option>
                   <option value="100">100</option>
@@ -142,6 +146,8 @@
                 </select>
               </td>
             </tr>
+           
+            
             <tr class="dans1" id="dans0_4">
               <td>(7段の方)目標の星の数</td>
               <td>
@@ -165,7 +171,7 @@
                   <option value="70">70</option>
                   <option value="75">75</option>
                   <option value="80">80</option>
-                  　<option value="85">85</option>
+                  <option value="85">85</option>
                   <option value="90">90</option>
                   <option value="95">95</option>
                   <option value="100">100</option>
@@ -238,8 +244,8 @@
                 </select>
               </td>
             </tr>
-
           </table>
+          <button id="calc">計算する</button>
         </div>
       </div>
 
@@ -256,106 +262,12 @@
         <div style="margin-top:1em;text-align:center;"><button class="btn btn-primary" id="btn_reset">リセット</button>
         </div>
       </div>
-
-
     </div>
 
     <div data-role="footer" data-theme="a">
       <h2>今日もランクマ頑張りましょう</h2>
     </div>
   </div>
-
-
-
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-  <script src="js/ranktweet.js"></script>
-  <script>
-    $(function () {
-
-
-      //$("#socialbuttons .twitter").socialbutton("twitter", {
-      //button : "horizontal",
-      //text : "つぶやきに含めるテキスト",
-      //url : "対象URL",
-      //}).width(95);
-
-      $('.tweet').socialbutton('twitter', {
-        button: 'horizontal',
-        text: '#第五人格ノルマ計算'
-
-      });
-
-
-      // 初期設定
-      $('#result').hide();
-      $('.dans0').hide();
-      $('.dans1').hide();
-
-
-      // 大段位選択
-
-      $('#dan1').on('change', function () {
-        $('.dans0').hide();
-        if ($('#dan1').val() < 7) {
-          $('#dans0_1').show();
-        }
-        else {
-          $('#dans0_2').show();
-        }
-      });
-
-      $('#dan2').on('change', function () {
-        $('.dans1').hide();
-        if ($('#dan2').val() < 7) {
-          $('#dans0_3').show();
-        }
-        else {
-          $('#dans0_4').show();
-        }
-      });
-
-
-
-      // 今日の日付取得
-      var today = new Date();
-      today_year = today.getFullYear();
-      today_month = today.getMonth() + 1;
-      today_day = today.getDate();
-      $('#today').text(today_year + '/' + today_month + '/' + today_day);
-
-      // 変更を判定
-      $('.data_in').on('change', function () {
-
-        win_rate = Number($('#end_date').val());
-        dan1 = Number($('#dan1').val());
-        dans1 = Number($('#dans1').val());
-        star1 = $('#star1').val();
-        dan2 = Number($('#dan2').val());
-        dans2 = $('#dans2').val();
-        star2 = $('#star2').val();
-
-        win_rate = $('#win_rate').val();
-        even_rate = $('#even_rate').val();
-
-        if (dan1 != '') console.log('dan1: ' + dan1);
-        if (dans1 != '') console.log('dans1: ' + dans1);
-        if (star1 != '') console.log('star1: ' + star1);
-        if (dan2 != '') console.log('dan2: ' + dan2);
-        if (dans2 != '') console.log('dans2: ' + dans2);
-        if (star2 != '') console.log('star2: ' + star2);
-        if (end_date != '') console.log('end_date: ' + end_date);
-        if (win_rate != '') console.log('win_rate: ' + win_rate);
-        if (even_rate != '') console.log('even_rate: ' + even_rate);
-
-        if (win_rate != '' && even_rate != '') {
-          $('#res_calculated_pt').text(dan1 + dan2);
-          console.log(dan1 + dan2);
-          $('#result').show();
-        }
-      });
-    });
-  </script>
+  <script type="text/javascript" src="js/ranktweet.js"></script>
+  <script type="text/javascript" src="js/calc.js"></script>
 </body>
-
-</html>
