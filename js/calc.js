@@ -41,7 +41,7 @@ function executeCalc(){
 
 
     const today = new Date($('#today').text())
-    const end_date = new Date($('#end_date').val().replace('-','/'))
+    const end_date = new Date($('#end_date').val().replace(/-/g,'/'))
     if (end_date <= today) {
         alert('シーズン終了予想日が本日または過去日です')
         return false
