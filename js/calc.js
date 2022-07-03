@@ -46,10 +46,6 @@ function executeCalc(){
         alert('シーズン終了予想日が本日または過去日です')
         return false
     }
-    alert("today:"+today)
-    alert("end_date:"+end_date)
-    alert($('#end_date').val().replace(/-/g,'/'))
-
     const restDate = (end_date-today)/(24*60*60*1000)
     $('#res_restdays').text(restDate)
     const pointPerDay = (goalPoint-startPoint)/restDate
