@@ -7,6 +7,7 @@
 const daidani = [0,180,500,1000,1500,2250]
 const syoudaniup = [60,80,100,100,150,150]
 const syoudaninum = [3,4,5,5,5,5]
+res_kaisu = '0'
 function isParamSatisfied() {
     return $('#end_date').val() != '' && $('#dan1').val() != '' && ($('#dans1').val() != '' || $('#star1').val() != '') && $('#dan2').val() != '' && ($('#dans2').val() != '' || $('#star2').val() != '') && $('#win_rate').val() != '' && $('#even_rate').val() != ''
 }
@@ -62,6 +63,13 @@ function executeCalc(){
     }
     $('#res_expect_pt').text((Math.floor(ExpectedValue*10))/10)
     $('#res_kaisu').text((Math.floor((pointPerDay/ExpectedValue)*10))/10)
+    res_kaisu = String((Math.floor((pointPerDay/ExpectedValue)*10))/10)
+    
+    $('.tweet').socialbutton('twitter', {
+        button: 'horizontal',
+        text: `#第五人格ノルマ計算 \n 目標達成のために、１日にまわすべき試合回数は${res_kaisu}回です`
+    
+    });
 
 
 
@@ -74,11 +82,9 @@ $('#calc').on('click', function () {
     executeCalc()
     $('#result').show();
 })
-$('.tweet').socialbutton('twitter', {
-    button: 'horizontal',
-    text: '#第五人格ノルマ計算'
 
-});
+
+console.log(res_kaisu)
 
 
 // 初期設定
