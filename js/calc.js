@@ -65,16 +65,27 @@ function executeCalc(){
     $('#res_kaisu').text((Math.floor((pointPerDay/ExpectedValue)*10))/10)
     res_kaisu = String((Math.floor((pointPerDay/ExpectedValue)*10))/10)
     
-    $('.tweet').socialbutton('twitter', {
-        button: 'horizontal',
-        text: `#第五人格ノルマ計算 \n 目標達成のために、１日にまわすべき試合回数は${res_kaisu}回です`
-    
-    });
+    // $('.tweet').socialbutton('twitter', {
+        // button: 'horizontal',
+        // text: `#第五人格ノルマ計算 \n 目標達成のために、１日にまわすべき試合回数は${res_kaisu}回です`
+    // });
 
+    // 画面最下部に自動スクロール
+    let elem = document.documentElement;
+    let bottom = elem.scrollHeight - elem.clientHeight;
+    window.scroll(0, bottom);
 
+     // tweet_url
+     tweet_url = 'https://twitter.com/intent/tweet';
 
-
+     // 送信テキスト
+     text = '#第五人格ノルマ計算%0A目標達成のために、１日にまわすべき試合回数は'+res_kaisu+'回です%0Ahttps://feteasca.github.io/rankkeisan/';
+ 
+     $('#socialbuttons').html('<p><a href="'+tweet_url+'?text='+text+'&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">#TwitterDev</a></p>');
+     twttr.widgets.load();
+ 
 }
+
 $('#calc').on('click', function () {
     if (!isParamSatisfied()) {
         alert('未入力の項目があります')
@@ -125,6 +136,24 @@ today_year = today.getFullYear();
 today_month = String(today.getMonth() + 1).padStart(2,'0');
 today_day = String(today.getDate()).padStart(2,'0');
 $('#today').text(today_year + '/' + today_month + '/' + today_day);
+
+//7月１０日追加
+window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  
+    t._e = [];
+    t.ready = function(f) {
+      t._e.push(f);
+    };
+  
+    return t;
+  }(document, "script", "twitter-wjs"));
 
 
 
